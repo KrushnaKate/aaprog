@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- Bootstrap 5 Bundle JS (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+    <style>
+        /* Sidebar styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* Main content margin */
+        .content {
+            margin-left: 260px; /* Add space for sidebar */
+            padding: 20px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3 class="text-white text-center">Admin Panel</h3>
+        <a href="#">Dashboard</a>
+        <a href="#">Products</a>
+        <a href="#">Sales</a>
+        <a href="#">Revenue</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="container-fluid text-white py-3" style="background-color: rgb(8, 170, 8);">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container my-4">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h3>Total products:</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <h2>100000</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h3>Sold products:</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <h2>20000</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h3>Total Revenue:</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <h2>100000 rs</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Node.js CRUD Test</title>
+</head>
+<body>
+  <h1>CRUD Operations</h1>
+
+  <div>
+    <h2>Create Item</h2>
+    <input id="createName" placeholder="Name" />
+    <input id="createPrice" placeholder="Price" type="number" />
+    <button id="createBtn">Create</button>
+  </div>
+
+  <div>
+    <h2>Items List</h2>
+    <ul id="itemsList"></ul>
+  </div>
+
+  <div>
+    <h2>Update Item</h2>
+    <input id="updateId" placeholder="Item ID" />
+    <input id="updateName" placeholder="New Name" />
+    <button id="updateBtn">Update</button>
+  </div>
+
+  <div>
+    <h2>Delete Item</h2>
+    <input id="deleteId" placeholder="Item ID" />
+    <button id="deleteBtn">Delete</button>
+  </div>
+
+  <!-- Link to external JS -->
+  <script src="app.js"></script>
+</body>
+</html>

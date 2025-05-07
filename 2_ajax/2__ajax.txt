@@ -1,0 +1,118 @@
+//server.js
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+app.use(express.static('public'));
+
+app.post('/register', (req,res)=>{
+    console.log(req.body);
+    res.status(201).json({massage: 'User registered successfully'}); 
+});
+
+app.listen(3000,()=>{
+    console.log('Server is running on port 3000');
+});
+
+
+//public/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>register</title>
+</head>
+<body>
+  <h1>Register</h1>
+  <form id="registrationForm">
+    <input type="text" id="name" placeholder="Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+//public/list.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+</head>
+<body>
+    <h1>Registered users</h1>
+    <ul id="userList"></ul>
+    <button id="clearButton">Clear</button>
+
+    <script src ="list.js"></script>
+</body>
+</html>
+
+
+
+//public/app.js
+document.getElementById("registrationForm").addEventListener('submit', function(e){
+
+    e.preventDefault(); // Prevent the default form submission
+
+    const userData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/register', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function(){
+
+        if(xhr.status === 201 || xhr.status === 200){
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const exists = users.some(user => user.email === userData.email);
+
+            if(!exists){
+                users.push(userData);
+                localStorage.setItem('users', JSON.stringify(users));
+                window.location.href = 'list.html';
+            }else{
+                alert('User already exists!');
+            }
+        }else{
+            alert('Error');
+        }
+
+
+    };
+
+    xhr.send(JSON.stringify(userData));
+});
+
+
+
+//public/list.js
+const users = JSON.parse(localStorage.getItem('users')) || [];
+const userList = document.getElementById('userList');
+
+if(users.length === 0){
+    userList.innerHTML = '<p>No users found.</p>';
+}else{
+    users.forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `Name: ${user.name}, Email: ${user.email}`;
+        userList.appendChild(li);
+
+    });
+}
+
+document.getElementById('clearButton').addEventListener('click', function(){
+    localStorage.removeItem('users');
+    window.location.reload();
+});
